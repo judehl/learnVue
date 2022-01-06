@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script>
+            // function f1({a,b,c}){
+            //     return a+b+c;
+            // }
+            // console.log(f1({a:1,b:2,c:3}));
+            // let jsonData={
+            //     name:"jude",
+            //     age:33,
+            //     likes:["code","song"]
+            // }
+            // let {name,age,likes:mylikes} = jsonData
+            // console.log(name);
+            // console.log(age);
+            // console.log(mylikes[1]);
+            
+            // window.onload=function(){
+            //     const map = new Map();
+            //     map.set('name','hk');
+            //     map.set('age',33);
+            //     const mydisp = document.getElementById('display')
+            //     for(let [key,value] of map){
+            //         mydisp.innerHTML += 'key:'+key+',';
+            //         mydisp.innerHTML += 'value:'+value+'<br>';
+            //     }
+            //     for(let [key] of map){
+            //         mydisp.innerHTML += 'key:'+key+ '<br>';
+            //     }
+            //     for(let [,value] of map){
+            //         mydisp.innerHTML += 'value:'+value+ '<br>';
+            //     }
+            // }
+            // sum = function(x,y){
+            //     return x+y;
+            // }
+            // console.log(sum(2,3));
+
+            // let sum1 = x => x*2;
+            // console.log(sum1(4));
+            // console.log(sum1(3));
+            
+            // const remainder = ([x,y]) => x%y;
+            // console.log(remainder([10,5]));
+            // const max = (...args)=>Math.max(...args);
+            // console.log(max(...[1,9,2,3,5,2]));
+            // const min = (...args) => Math.min(...args);
+            // console.log(min(...[1,9,2,3,5,2]));
+
+            // let array = [1,2,3];
+            // let newarr = array.map(x=>x*2);
+            // console.log(array);
+            // console.log(newarr);
+
+            // let arr = [88,90,60,43]
+            // let newarray = arr.map(x => x>=60?x>=90?'优秀':'及格':'不及格');
+            // console.log(arr);
+            // console.log(newarray);
+
+            // let arr = [1,2,3,4];
+            // console.log(arr);
+            // arr.forEach((value,index,arr)=>arr[index]=value+1);
+            // console.log(arr);
+
+            // let array = [70,21,80,90];
+            // let newarray = array.filter(item => item%3==0);
+            // console.log(array);
+            // console.log(newarray);
+
+            // let arrJson =[
+            //     {lang:'web',price:54},
+            //     {lang:'c++',price:88},
+            //     {lang:'json',price:63},
+            //     {lang:'es6',price:99},
+            // ] 
+            // let newjson = arrJson.filter(item=>item.price>=80);
+            // console.log(arrJson);
+            // console.log(newjson);
+            
+            // var people = [
+            //     {name:'lb',sex:'male'},
+            //     {name:'wq',sex:'female'},
+            //     {name:'lyd',sex:'female'},
+            // ]
+            // var result = people.every(item => item.sex==='female');
+            // var res = people.some(item=>item.sex==='male');
+            // console.log(result);
+            // console.log(res);
+
+            //数组求和
+            // const arr = [1,2,3,4,5];
+            // const sum = arr.reduce((pre,item)=>{
+            //     return pre+item;
+            // })
+            // console.log(sum);
+
+            // //求最大值
+            // const max = arr.reduce((pre,item) => {
+            //     return Math.max(pre,item);
+            // })
+            // console.log(max);
+
+            // //数组去重
+            // const arr1 = [1,2,3,1,2];
+            // const newarr1 = arr1.reduce((pre,item)=>{
+            //     pre.indexOf(item) === -1 && pre.push(item);
+            //     return pre;
+            // },[])
+            // console.log(newarr1);
+
+            // //字符串计数
+            // const str = 'hello world!';
+            // const obj = str.split('').reduce((pre,item)=>{
+            //     pre[item]?pre[item]++:pre[item]=1;
+            //     return pre;
+            // },{});
+            // console.log(obj);
+        
+        var myjson = {
+            name:'hk',
+            age:18
+        }
+        for(var key in myjson){
+            document.write(key+':'+myjson[key]+'<br>')
+        }
+
+        var wqjson = [
+            {name:'hk',age:31},
+            {name:'ly',age:32},
+            {name:'hh',age:33}
+        ]
+        for(var i=0;i<wqjson.length;i++){
+            for(j in wqjson[i]){
+                document.write(j+':'+wqjson[i][j]+'<br>')
+            }
+        }
+
+            
+        </script>
+    </head>
+    <body>
+        <div id='display'></div>
+    </body>
+</html>
