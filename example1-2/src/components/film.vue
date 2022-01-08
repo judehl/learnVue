@@ -10,24 +10,28 @@
                 'noSeat':seatflag[index]==-1}"
                 @click="handleClick(index)"
                 >
-
                 </li>
             </ul>
         </div>
         <div class="filmRight">
             <div class="rightTop"></div>
             <div class="rightBottom">
-                <p id="seatSelect">
-                    座位：
+                <p id="seatSelect">座位：
                     <span v-for="(item,index) in curSeatDisp" :key="index">
-                        {{item}}
-                    </span><br>
-                    <strong style="color:red;">{{count}}</strong>个座位<br>
+                        {{item}} 
+                    </span>
+                </p>
+                <p>已选中<strong style="color:red;">{{count}}</strong>个座位，
                     <strong style="color:red;">
                         再次单击座位可以取消。
                         <span v-if="maxFlag">您最多只能买五张票！</span>
                     </strong>
                 </p>
+                <hr>
+            </div>
+            <div class="rightBottom">
+                <p>单价：<strong>{{numFormat(filmInfo.unitPrice)}}</strong></p>
+                <p>总价<strong style="color:red;">{{numFormat(totalPrice)}}</strong></p>
             </div>
         </div>
 
@@ -35,11 +39,16 @@
 </template>
 
 <script>
-import { reactive, toRefs } from 'vue'
+import { computed, reactive, toRefs } from 'vue'
 
 export default {
     setup () {
         const state = reactive({
+            count: 0,
+            curSeat:[],
+            curSeatDisp:[],
+            seatCol:10,
+            maxFlag:false,
             seatflag:[
                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -54,11 +63,15 @@ export default {
                 -1, 0, 0, 0, 0, 0, 0, 0, 0, -1,
                 -1, -1, 0, 0, 0, 0, 0, 0, -1, -1
             ],
-            count: 0,
-            curSeat:[],
-            curSeatDisp:[],
-            seatCol:10,
-            maxFlag:false
+            filmInfo: {
+                unitPrice: 38
+            }    
+        })
+
+        const numFormat = (data)=> '￥' + data.toFixed(2)
+
+        const totalPrice = computed(()=>{
+            return state.filmInfo.unitPrice*state.count 
         })
 
         const handleClick = (index) =>{
@@ -86,6 +99,8 @@ export default {
         return {
             ...toRefs(state),
             handleClick,
+            numFormat,
+            totalPrice
         }
     }
 }
@@ -149,4 +164,13 @@ export default {
         /*该位置无座位*/
         background: url("../assets/bg.png") no-repeat 1px -84px;
     }
+     #seatSelect span {
+            padding: 5px;
+            border: 1px solid red;
+            margin: 8px;
+            font-size: 14px;
+            background-color: white;
+            font-weight: bold;
+            color: red;
+        }
 </style>
