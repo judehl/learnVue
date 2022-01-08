@@ -86,7 +86,6 @@ export default {
         return {
             ...toRefs(state),
             handleClick,
-
         }
     }
 }
